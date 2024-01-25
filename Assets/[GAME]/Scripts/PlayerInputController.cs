@@ -34,7 +34,7 @@ public class PlayerInputController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     public GameObject RaycastToGetGridcell()
@@ -57,11 +57,11 @@ public class PlayerInputController : MonoBehaviour
         // Check if the ray hit something
         if (hit.collider != null)
         {
-            Debug.Log("Ray hit: " + hit.collider.gameObject.name);
-            
+            // Debug.Log("Ray hit: " + hit.collider.gameObject.name);
+
             if (hit.collider.CompareTag("GridCell"))
             {
-                Debug.Log("GridCell hit!");
+                // Debug.Log("GridCell hit!");
 
                 return hit.collider.gameObject;
             }
@@ -69,6 +69,23 @@ public class PlayerInputController : MonoBehaviour
         else
         {
             return null;
+        }
+
+        return null;
+    }
+
+    public GameObject GetNeighbourGridCell(GameObject originCell, Vector2Int offset)
+    {
+        if (originCell == null) return null;
+
+        Vector2 originalPosition = originCell.transform.position;
+        Vector2 newPosition = originalPosition + offset;
+
+        Collider2D collider = Physics2D.OverlapPoint(newPosition);
+
+        if (collider != null)
+        {
+            return collider.gameObject;
         }
 
         return null;

@@ -8,9 +8,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text goldText;
     [SerializeField] TMP_Text gemText;
 
-    public void UpdateUI(int gold, int gem)
+    void OnEnable()
     {
-        goldText.text = "Gold: " + gold;
-        gemText.text = "Gem: " + gem;
+        GameManager.Instance.OnResourcesChanged += UpdateGoldGemText;
+    }
+
+    void OnDisable()
+    {
+         GameManager.Instance.OnResourcesChanged -= UpdateGoldGemText;
+    }
+
+    void Start()
+    {
+        UpdateGoldGemText();
+    }
+
+    public void UpdateGoldGemText()
+    {
+        goldText.text = GameManager.Instance.gold.ToString();
+        gemText.text = GameManager.Instance.gems.ToString();
     }
 }

@@ -16,8 +16,7 @@ public class BuildingButtonsManager : MonoBehaviour
             // Spend resources
             SpendResources(buildingsSO.buildingGoldCost, buildingsSO.buildingGemCost);
 
-            //TODO: I WAS HERE
-            
+            // TODO: Object pool sounds good
             // Instantiate building
             GameObject building = Instantiate(buildingsSO.buildingPrefab, Vector2.zero, Quaternion.identity);
 
@@ -37,11 +36,21 @@ public class BuildingButtonsManager : MonoBehaviour
     private bool CanAffordBuilding(int goldCost, int gemCost)
     {
         // Return true if resources are enough, false otherwise
-        return true; 
+        if (goldCost <= GameManager.Instance.gold && gemCost <= GameManager.Instance.gems)
+        {
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void SpendResources(int goldCost, int gemCost)
     {
+        GameManager.Instance.SubtractGold(goldCost);
+        GameManager.Instance.SubtractGems(gemCost);
         // I want to have a resource manager or some global script to handle this
         // Debug.Log("Resources spent: " + cost);
     }

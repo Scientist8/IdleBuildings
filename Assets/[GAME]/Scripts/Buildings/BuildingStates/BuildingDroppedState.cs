@@ -6,7 +6,7 @@ public class BuildingDroppedState : BuildingBaseState
 {
     public override void EnterState(BuildingController building)
     {
-        building.ChangeColor(building.color2);
+        building.ChangeColor(building.color3);
         building.ChangeLayer("Default");
     }
 

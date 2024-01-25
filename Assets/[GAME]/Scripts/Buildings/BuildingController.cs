@@ -12,11 +12,14 @@ public class BuildingController : MonoBehaviour
     // ==================================================================
 
     public SpriteRenderer spriteRenderer;
-    public Color color1, color2;
+    public SpriteRenderer[] occupiedCellSprRend;
+    public Color color1, color2, color3;
 
     // ==================================================================
 
     public BuildingsSO buildingData;
+
+    public List<GameObject> neighbourGridCells;
 
     void Awake()
     {
@@ -31,6 +34,8 @@ public class BuildingController : MonoBehaviour
 
     void Start()
     {
+        occupiedCellSprRend = GetComponentsInChildren<SpriteRenderer>();
+
         // Go into the first state
         CurrentState = DraggingState;
         CurrentState.EnterState(this);
@@ -62,6 +67,11 @@ public class BuildingController : MonoBehaviour
     public void ChangeColor(Color color)
     {
         spriteRenderer.color = color;
+
+        for (int i = 0; i < occupiedCellSprRend.Length; i++)
+        {
+            occupiedCellSprRend[i].color = color;
+        }
     }
 
     // ==================================================================

@@ -147,6 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 0}
-  color1: {r: 1, g: 1, b: 1, a: 0.5882353}
-  color2: {r: 1, g: 1, b: 1, a: 1}
+  occupiedCellSprRend: []
+  color1: {r: 0.3931496, g: 0.8679245, b: 0.1915984, a: 0.5882353}
+  color2: {r: 0.8396226, g: 0.2804022, b: 0.2804022, a: 0.5882353}
+  color3: {r: 1, g: 1, b: 1, a: 1}
   buildingData: {fileID: 11400000, guid: 83a0518d02c878f49ae0253a75dbde26, type: 2}
+  neighbourGridCells: []
