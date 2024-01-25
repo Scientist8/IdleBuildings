@@ -17,11 +17,17 @@ public class BuildingDraggingState : BuildingBaseState
 
         building.transform.position = worldMousePosition;
 
+        GameObject gridCell = PlayerInputController.Instance.RaycastToGetGridcell();
+
+        // Check if the building is placeable
+        bool isPlaceable = CheckIfPlaceable(building, gridCell);
+
+        // Change color based on whether it's placeable or not
+        building.ChangeColor(isPlaceable ? building.color1 : building.color2);
+
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject gridCell = PlayerInputController.Instance.RaycastToGetGridcell();
-
-            if (gridCell != null && !gridCell.GetComponent<CellScript>().isOccupied)
+            if (gridCell != null && !gridCell.GetComponent<CellScript>().isOccupied && isPlaceable)
             {
                 for (int i = 0; i < building.buildingData.occupiedGridCells.Length; i++)
                 {
@@ -59,5 +65,20 @@ public class BuildingDraggingState : BuildingBaseState
                 building.DeactivateObject();
             }
         }
+    }
+
+    private bool CheckIfPlaceable(BuildingController building, GameObject gridCell)
+    {
+        for (int i = 0; i < building.buildingData.occupiedGridCells.Length; i++)
+        {
+            Vector2Int offset = building.buildingData.occupiedGridCells[i];
+            CellScript neighbourGridCell = PlayerInputController.Instance.GetNeighbourGridCell(gridCell, offset)?.GetComponent<CellScript>();
+
+            if (neighbourGridCell == null || neighbourGridCell.isOccupied)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
