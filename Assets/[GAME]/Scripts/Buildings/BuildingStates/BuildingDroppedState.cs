@@ -8,6 +8,8 @@ public class BuildingDroppedState : BuildingBaseState
     {
         building.ChangeColor(building.color3);
         building.ChangeLayer("Default");
+
+        building.StartGeneratingResources();
     }
 
     public override void UpdateState(BuildingController building)

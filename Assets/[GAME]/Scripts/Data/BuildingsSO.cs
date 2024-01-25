@@ -4,8 +4,10 @@ using UnityEngine;
 public class BuildingsSO : ScriptableObject
 {
     public string buildingName;
-    public int buildingGoldCost, buildingGemCost;
     public GameObject buildingPrefab;
+    public int buildingGoldCost, buildingGemCost;
+    public int generatedGold, generatedGem;
+    public float generationTimer;
     public Vector2Int[] occupiedGridCells;
 
     // XX

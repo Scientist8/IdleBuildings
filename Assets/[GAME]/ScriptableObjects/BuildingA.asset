@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: BuildingA
   m_EditorClassIdentifier: 
   buildingName: BuildingA
+  buildingPrefab: {fileID: 7197409684653532112, guid: b95333f6fbadb6c4087c3d320048304e, type: 3}
   buildingGoldCost: 2
   buildingGemCost: 1
-  buildingPrefab: {fileID: 7197409684653532112, guid: b95333f6fbadb6c4087c3d320048304e, type: 3}
+  generatedGold: 3
+  generatedGem: 2
+  generationTimer: 1
   occupiedGridCells:
   - {x: 0, y: 0}
   - {x: 1, y: 0}

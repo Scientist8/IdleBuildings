@@ -21,6 +21,10 @@ public class BuildingController : MonoBehaviour
 
     public List<GameObject> neighbourGridCells;
 
+    [SerializeField] GameObject floatingNumber;
+ 
+    // ==================================================================
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -53,8 +57,6 @@ public class BuildingController : MonoBehaviour
     // ==================================================================
 
 
-    // ==================================================================
-
     public void ChangeLayer(string newLayer)
     {
         int newLayerIndex = LayerMask.NameToLayer(newLayer);
@@ -71,6 +73,30 @@ public class BuildingController : MonoBehaviour
         for (int i = 0; i < occupiedCellSprRend.Length; i++)
         {
             occupiedCellSprRend[i].color = color;
+        }
+    }
+
+    // ==================================================================
+
+    public void StartGeneratingResources()
+    {
+        StartCoroutine(GenerateResources());
+    }
+
+    public IEnumerator GenerateResources()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(buildingData.generationTimer);
+
+            GameManager.Instance.AddGold(buildingData.generatedGold);
+            GameManager.Instance.AddGems(buildingData.generatedGem);
+
+            GameObject floatingNumberGold = Instantiate(floatingNumber, transform.position, Quaternion.identity);
+            floatingNumberGold.GetComponent<FloatingNumber>().SetText(buildingData.generatedGold.ToString());
+
+            GameObject floatingNumberGem = Instantiate(floatingNumber, transform.position + Vector3.right, Quaternion.identity);
+            floatingNumberGem.GetComponent<FloatingNumber>().SetText(buildingData.generatedGem.ToString());
         }
     }
 

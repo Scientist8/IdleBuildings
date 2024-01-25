@@ -153,3 +153,4 @@ MonoBehaviour:
   color3: {r: 1, g: 1, b: 1, a: 1}
   buildingData: {fileID: 11400000, guid: 83a0518d02c878f49ae0253a75dbde26, type: 2}
   neighbourGridCells: []
+  floatingNumber: {fileID: 8531577729182029871, guid: fae327b413c26c248873b8e37fa47dc6, type: 3}

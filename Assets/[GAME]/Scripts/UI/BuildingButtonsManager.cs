@@ -7,6 +7,8 @@ public class BuildingButtonsManager : MonoBehaviour
 {
     [SerializeField] BuildingsSO buildingsSO;
     [SerializeField] GameObject occupiedCellPrefab;
+    [SerializeField] GameObject floatingNumber;
+    [SerializeField] Vector3 goldTextPos, gemTextPos;
 
     public void GetBuildingA()
     {
@@ -26,6 +28,14 @@ public class BuildingButtonsManager : MonoBehaviour
                 occupiedCell.transform.position = building.transform.position + new Vector3(buildingsSO.occupiedGridCells[i].x, buildingsSO.occupiedGridCells[i].y, 0);
                 occupiedCell.transform.parent = building.transform;
             }
+
+            GameObject floatingNGold = Instantiate(floatingNumber, goldTextPos, Quaternion.identity);
+            floatingNGold.GetComponent<FloatingNumber>().SetText(buildingsSO.buildingGoldCost.ToString());
+
+            GameObject floatingNGem = Instantiate(floatingNumber, gemTextPos, Quaternion.identity);
+            floatingNGem.GetComponent<FloatingNumber>().SetText(buildingsSO.buildingGemCost.ToString());
+
+
         }
         else
         {
