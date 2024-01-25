@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingController : MonoBehaviour
 {
@@ -21,8 +22,16 @@ public class BuildingController : MonoBehaviour
 
     public List<GameObject> neighbourGridCells;
 
+    public Image fillBarImage;
+    private float currentFill; // Current fill value for the bar
+    private float fillRate; // Rate at which the fill bar increases per second
+
+    float timeElapsed = 0f;
+    float fillAmount = 0f;
+
+
     [SerializeField] GameObject floatingNumber;
- 
+
     // ==================================================================
 
     void Awake()
@@ -39,6 +48,8 @@ public class BuildingController : MonoBehaviour
     void Start()
     {
         occupiedCellSprRend = GetComponentsInChildren<SpriteRenderer>();
+
+        fillRate = 1f / buildingData.generationTimer;
 
         // Go into the first state
         CurrentState = DraggingState;
@@ -83,20 +94,37 @@ public class BuildingController : MonoBehaviour
         StartCoroutine(GenerateResources());
     }
 
-    public IEnumerator GenerateResources()
+    // ==================================================================
+
+    private IEnumerator GenerateResources()
     {
+
         while (true)
         {
-            yield return new WaitForSeconds(buildingData.generationTimer);
+            yield return null; // Wait for the next frame
 
-            GameManager.Instance.AddGold(buildingData.generatedGold);
-            GameManager.Instance.AddGems(buildingData.generatedGem);
+            timeElapsed += Time.deltaTime;
 
-            GameObject floatingNumberGold = Instantiate(floatingNumber, transform.position, Quaternion.identity);
-            floatingNumberGold.GetComponent<FloatingNumber>().SetText(buildingData.generatedGold.ToString());
+            // Update fill bar based on time elapsed
+            fillAmount = timeElapsed / buildingData.generationTimer;
+            fillBarImage.fillAmount = fillAmount;
 
-            GameObject floatingNumberGem = Instantiate(floatingNumber, transform.position + Vector3.right, Quaternion.identity);
-            floatingNumberGem.GetComponent<FloatingNumber>().SetText(buildingData.generatedGem.ToString());
+            if (timeElapsed >= buildingData.generationTimer)
+            {
+                GameManager.Instance.AddGold(buildingData.generatedGold);
+                GameManager.Instance.AddGems(buildingData.generatedGem);
+
+                GameObject floatingNumberGold = Instantiate(floatingNumber, transform.position, Quaternion.identity);
+                floatingNumberGold.GetComponent<FloatingNumber>().SetText(buildingData.generatedGold.ToString());
+
+                GameObject floatingNumberGem = Instantiate(floatingNumber, transform.position + Vector3.right, Quaternion.identity);
+                floatingNumberGem.GetComponent<FloatingNumber>().SetText(buildingData.generatedGem.ToString());
+
+                // Reset time elapsed and fill bar
+                timeElapsed = 0f;
+                fillBarImage.fillAmount = 0f;
+                fillAmount = 0f;
+            }
         }
     }
 
@@ -106,6 +134,13 @@ public class BuildingController : MonoBehaviour
     {
         CurrentState = state;
         state.EnterState(this);
+    }
+
+    // ==================================================================
+
+    public void DestroyThisObject()
+    {
+        Destroy(gameObject, 0.1f);
     }
 
     // ==================================================================

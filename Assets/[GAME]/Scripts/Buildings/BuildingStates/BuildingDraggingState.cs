@@ -17,8 +17,6 @@ public class BuildingDraggingState : BuildingBaseState
 
         building.transform.position = worldMousePosition;
 
-
-
         if (Input.GetMouseButtonDown(0))
         {
             GameObject gridCell = PlayerInputController.Instance.RaycastToGetGridcell();
@@ -51,6 +49,14 @@ public class BuildingDraggingState : BuildingBaseState
 
                 building.transform.position = gridCell.transform.position;
                 building.ChangeState(building.DroppedState);
+            }
+
+            else
+            {
+                GameManager.Instance.AddGold(building.buildingData.buildingGoldCost);
+                GameManager.Instance.AddGems(building.buildingData.buildingGemCost);
+
+                building.DestroyThisObject();
             }
         }
     }
