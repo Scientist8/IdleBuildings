@@ -363,7 +363,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 216820516}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1106905523}
+        m_TargetAssemblyTypeName: BuildingButtonsManager, Assembly-CSharp
+        m_MethodName: BuyBuildingC
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &216820516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2776,7 +2788,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 953622557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1106905523}
+        m_TargetAssemblyTypeName: BuildingButtonsManager, Assembly-CSharp
+        m_MethodName: BuyBuildingE
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &953622557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2844,8 +2868,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1ccc7dab89e514eb216ebe669f7a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingAData: {fileID: 11400000, guid: 83a0518d02c878f49ae0253a75dbde26, type: 2}
+  buildingBData: {fileID: 11400000, guid: eb93b3dda21f3df4885842414c607f59, type: 2}
+  buildingCData: {fileID: 11400000, guid: aadb57f8cf789894c9e84be6fac294b9, type: 2}
+  buildingDData: {fileID: 11400000, guid: c8d3c3eeece30914c8aae5dda5d7f825, type: 2}
+  buildingEData: {fileID: 11400000, guid: 7fcb67e30e58b894daacabf5e765cd2d, type: 2}
+  buildingFData: {fileID: 11400000, guid: d4e95df800ed21841921a9389d7d547e, type: 2}
   goldText: {fileID: 934947541}
   gemText: {fileID: 531998401}
+  buildingANameText: {fileID: 586803505}
+  buildingBNameText: {fileID: 311388685}
+  buildingCNameText: {fileID: 1463877597}
+  buildingDNameText: {fileID: 1492093293}
+  buildingENameText: {fileID: 409374058}
+  buildingFNameText: {fileID: 333395003}
+  buildingAGoldText: {fileID: 569585870}
+  buildingBGoldText: {fileID: 1430818260}
+  buildingCGoldText: {fileID: 2137653426}
+  buildingDGoldText: {fileID: 817567215}
+  buildingEGoldText: {fileID: 1713063869}
+  buildingFGoldText: {fileID: 1250141233}
+  buildingBGemText: {fileID: 974279901}
+  buildingCGemText: {fileID: 1546717543}
+  buildingDGemText: {fileID: 829242419}
+  buildingEGemText: {fileID: 1686014968}
+  buildingFGemText: {fileID: 484178662}
 --- !u!4 &954699391
 Transform:
   m_ObjectHideFlags: 0
@@ -2859,7 +2906,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &974279899
 GameObject:
@@ -3025,7 +3072,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c7229505084e844b88c1f17c15ea49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingsSO: {fileID: 11400000, guid: 83a0518d02c878f49ae0253a75dbde26, type: 2}
+  buildingAData: {fileID: 11400000, guid: 83a0518d02c878f49ae0253a75dbde26, type: 2}
+  buildingBData: {fileID: 11400000, guid: eb93b3dda21f3df4885842414c607f59, type: 2}
+  buildingCData: {fileID: 11400000, guid: aadb57f8cf789894c9e84be6fac294b9, type: 2}
+  buildingDData: {fileID: 11400000, guid: c8d3c3eeece30914c8aae5dda5d7f825, type: 2}
+  buildingEData: {fileID: 11400000, guid: 7fcb67e30e58b894daacabf5e765cd2d, type: 2}
+  buildingFData: {fileID: 11400000, guid: d4e95df800ed21841921a9389d7d547e, type: 2}
   occupiedCellPrefab: {fileID: 8452948991626978152, guid: 5cabafc72f6a5104380f3a6f014bea56, type: 3}
   floatingNumber: {fileID: 8531577729182029871, guid: fae327b413c26c248873b8e37fa47dc6, type: 3}
   goldTextPos: {x: -5.5, y: 8, z: 0}
@@ -3043,7 +3095,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113507252
 GameObject:
@@ -3618,7 +3670,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1257054909}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1106905523}
+        m_TargetAssemblyTypeName: BuildingButtonsManager, Assembly-CSharp
+        m_MethodName: BuyBuildingD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1257054909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3956,8 +4020,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a65fb05b028ed14da8310166d20b07e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gems: 10
-  gold: 10
+  gems: 100
+  gold: 100
 --- !u!4 &1473472587
 Transform:
   m_ObjectHideFlags: 0
@@ -3971,7 +4035,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1489120124
 GameObject:
@@ -4272,7 +4336,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1509094416}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1106905523}
+        m_TargetAssemblyTypeName: BuildingButtonsManager, Assembly-CSharp
+        m_MethodName: BuyBuildingB
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1509094416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4564,7 +4640,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1652347586
 GameObject:
@@ -5059,7 +5135,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1713147753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1106905523}
+        m_TargetAssemblyTypeName: BuildingButtonsManager, Assembly-CSharp
+        m_MethodName: BuyBuildingF
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1713147753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5174,6 +5262,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754626351}
   m_CullTransparentMesh: 1
+--- !u!1 &1861022046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1861022048}
+  - component: {fileID: 1861022047}
+  m_Layer: 0
+  m_Name: ObjectPoolingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1861022047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861022046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5f1a10d238fda49aea69a8408d80a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPoolItems:
+  - prefab: {fileID: 8452948991626978152, guid: 5cabafc72f6a5104380f3a6f014bea56, type: 3}
+    poolSize: 20
+  - prefab: {fileID: 8531577729182029871, guid: fae327b413c26c248873b8e37fa47dc6, type: 3}
+    poolSize: 20
+  - prefab: {fileID: 7197409684653532112, guid: b95333f6fbadb6c4087c3d320048304e, type: 3}
+    poolSize: 10
+  - prefab: {fileID: 7197409684653532112, guid: 958ce7e65cddebd4baf1c98665151be9, type: 3}
+    poolSize: 10
+  - prefab: {fileID: 7197409684653532112, guid: b31bde236c908b745ad5efc201bb22f8, type: 3}
+    poolSize: 10
+  - prefab: {fileID: 7197409684653532112, guid: 01aa34e750331c342a947b412f2081b7, type: 3}
+    poolSize: 10
+  - prefab: {fileID: 7197409684653532112, guid: 3970bbf8a081bf94eac05cc52b1d0267, type: 3}
+    poolSize: 10
+  - prefab: {fileID: 7197409684653532112, guid: 278001360c2817a42ba93b12b97ca6b3, type: 3}
+    poolSize: 10
+--- !u!4 &1861022048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861022046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1887993918
 GameObject:
   m_ObjectHideFlags: 0
@@ -5263,7 +5412,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1106905523}
         m_TargetAssemblyTypeName: BuildingButtonsManager, Assembly-CSharp
-        m_MethodName: GetBuildingA
+        m_MethodName: BuyBuildingA
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5557,7 +5706,7 @@ RectTransform:
   m_Children:
   - {fileID: 236006125}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5609,7 +5758,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2090692023
 GameObject:
@@ -5677,7 +5826,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2137653424
 GameObject:

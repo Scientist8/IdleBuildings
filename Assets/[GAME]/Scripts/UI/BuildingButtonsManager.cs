@@ -5,36 +5,120 @@ using UnityEngine;
 
 public class BuildingButtonsManager : MonoBehaviour
 {
-    [SerializeField] BuildingsSO buildingsSO;
+    [SerializeField] BuildingsSO buildingAData, buildingBData, buildingCData, buildingDData, buildingEData, buildingFData;
     [SerializeField] GameObject occupiedCellPrefab;
     [SerializeField] GameObject floatingNumber;
     [SerializeField] Vector3 goldTextPos, gemTextPos;
 
-    public void GetBuildingA()
+    // =====================================================================
+
+    public void BuyBuildingA()
     {
         // Check if there are enough resources to build
-        if (CanAffordBuilding(buildingsSO.buildingGoldCost, buildingsSO.buildingGemCost))
+        if (CanAffordBuilding(buildingAData.buildingGoldCost, buildingAData.buildingGemCost))
         {
             // Spend resources
-            SpendResources(buildingsSO.buildingGoldCost, buildingsSO.buildingGemCost);
+            SpendResources(buildingAData.buildingGoldCost, buildingAData.buildingGemCost);
 
-            // TODO: Object pool sounds good
-            // Instantiate building
-            GameObject building = Instantiate(buildingsSO.buildingPrefab, Vector2.zero, Quaternion.identity);
+            GetBuildingAndOccupiedCells(buildingAData);
 
-            for (int i = 0; i < buildingsSO.occupiedGridCells.Count(); i++)
-            {
-                GameObject occupiedCell = Instantiate(occupiedCellPrefab);
-                occupiedCell.transform.position = building.transform.position + new Vector3(buildingsSO.occupiedGridCells[i].x, buildingsSO.occupiedGridCells[i].y, 0);
-                occupiedCell.transform.parent = building.transform;
-            }
+            GetAndDisplayFloatingNumbers(buildingAData);
 
-            GameObject floatingNGold = Instantiate(floatingNumber, goldTextPos, Quaternion.identity);
-            floatingNGold.GetComponent<FloatingNumber>().SetText(buildingsSO.buildingGoldCost.ToString());
+        }
+        else
+        {
+            Debug.Log("Not enough resources to build!");
+        }
+    }
 
-            GameObject floatingNGem = Instantiate(floatingNumber, gemTextPos, Quaternion.identity);
-            floatingNGem.GetComponent<FloatingNumber>().SetText(buildingsSO.buildingGemCost.ToString());
+    public void BuyBuildingB()
+    {
+        // Check if there are enough resources to build
+        if (CanAffordBuilding(buildingBData.buildingGoldCost, buildingBData.buildingGemCost))
+        {
+            // Spend resources
+            SpendResources(buildingBData.buildingGoldCost, buildingBData.buildingGemCost);
 
+            GetBuildingAndOccupiedCells(buildingBData);
+
+            GetAndDisplayFloatingNumbers(buildingBData);
+
+        }
+        else
+        {
+            Debug.Log("Not enough resources to build!");
+        }
+    }
+
+    public void BuyBuildingC()
+    {
+        // Check if there are enough resources to build
+        if (CanAffordBuilding(buildingCData.buildingGoldCost, buildingCData.buildingGemCost))
+        {
+            // Spend resources
+            SpendResources(buildingCData.buildingGoldCost, buildingCData.buildingGemCost);
+
+            GetBuildingAndOccupiedCells(buildingCData);
+
+            GetAndDisplayFloatingNumbers(buildingCData);
+
+        }
+        else
+        {
+            Debug.Log("Not enough resources to build!");
+        }
+    }
+
+    public void BuyBuildingD()
+    {
+        // Check if there are enough resources to build
+        if (CanAffordBuilding(buildingDData.buildingGoldCost, buildingDData.buildingGemCost))
+        {
+            // Spend resources
+            SpendResources(buildingDData.buildingGoldCost, buildingDData.buildingGemCost);
+
+            GetBuildingAndOccupiedCells(buildingDData);
+
+            GetAndDisplayFloatingNumbers(buildingDData);
+
+        }
+        else
+        {
+            Debug.Log("Not enough resources to build!");
+        }
+    }
+
+    public void BuyBuildingE()
+    {
+        // Check if there are enough resources to build
+        if (CanAffordBuilding(buildingEData.buildingGoldCost, buildingEData.buildingGemCost))
+        {
+            // Spend resources
+            SpendResources(buildingEData.buildingGoldCost, buildingEData.buildingGemCost);
+
+            GetBuildingAndOccupiedCells(buildingEData);
+
+            GetAndDisplayFloatingNumbers(buildingEData);
+
+        }
+        else
+        {
+            Debug.Log("Not enough resources to build!");
+        }
+    }
+
+
+    public void BuyBuildingF()
+    {
+        // Check if there are enough resources to build
+        if (CanAffordBuilding(buildingFData.buildingGoldCost, buildingFData.buildingGemCost))
+        {
+            // Spend resources
+            SpendResources(buildingFData.buildingGoldCost, buildingFData.buildingGemCost);
+
+            GetBuildingAndOccupiedCells(buildingFData);
+
+            GetAndDisplayFloatingNumbers(buildingFData);
 
         }
         else
@@ -61,7 +145,32 @@ public class BuildingButtonsManager : MonoBehaviour
     {
         GameManager.Instance.SubtractGold(goldCost);
         GameManager.Instance.SubtractGems(gemCost);
-        // I want to have a resource manager or some global script to handle this
-        // Debug.Log("Resources spent: " + cost);
+    }
+
+    private void GetBuildingAndOccupiedCells(BuildingsSO buildingData)
+    {
+        GameObject building = ObjectPoolingManager.Instance.GetPooledObject(buildingData.buildingPrefab);
+        building.SetActive(true);
+
+        for (int i = 0; i < buildingData.occupiedGridCells.Count(); i++)
+        {
+            GameObject occupiedCell = ObjectPoolingManager.Instance.GetPooledObject(occupiedCellPrefab);
+            occupiedCell.SetActive(true);
+            occupiedCell.transform.position = building.transform.position + new Vector3(buildingData.occupiedGridCells[i].x, buildingData.occupiedGridCells[i].y, 0);
+            occupiedCell.transform.parent = building.transform;
+        }
+    }
+
+    private void GetAndDisplayFloatingNumbers(BuildingsSO buildingData)
+    {
+        GameObject floatingNGold = ObjectPoolingManager.Instance.GetPooledObject(floatingNumber);
+        floatingNGold.transform.position = goldTextPos;
+        floatingNGold.SetActive(true);
+        floatingNGold.GetComponent<FloatingNumber>().SetText(buildingData.buildingGoldCost.ToString());
+
+        GameObject floatingNGem = ObjectPoolingManager.Instance.GetPooledObject(floatingNumber);
+        floatingNGem.transform.position = gemTextPos;
+        floatingNGem.SetActive(true);
+        floatingNGem.GetComponent<FloatingNumber>().SetText(buildingData.buildingGemCost.ToString());
     }
 }

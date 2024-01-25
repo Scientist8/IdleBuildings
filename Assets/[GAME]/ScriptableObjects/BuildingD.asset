@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01fb3d32888f5924ab0a909df7b0e417, type: 3}
-  m_Name: BuildingA
+  m_Name: BuildingD
   m_EditorClassIdentifier: 
-  buildingName: BuildingA
-  buildingPrefab: {fileID: 7197409684653532112, guid: b95333f6fbadb6c4087c3d320048304e, type: 3}
-  buildingGoldCost: 2
-  buildingGemCost: 0
-  generatedGold: 2
-  generatedGem: 0
-  generationTimer: 5
+  buildingName: BuildingD
+  buildingPrefab: {fileID: 7197409684653532112, guid: 01aa34e750331c342a947b412f2081b7, type: 3}
+  buildingGoldCost: 9
+  buildingGemCost: 7
+  generatedGold: 6
+  generatedGem: 6
+  generationTimer: 6
   occupiedGridCells:
   - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 1, y: 1}

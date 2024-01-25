@@ -19,12 +19,10 @@ public class BuildingController : MonoBehaviour
     // ==================================================================
 
     public BuildingsSO buildingData;
-
     public List<GameObject> neighbourGridCells;
 
     public Image fillBarImage;
-    private float currentFill; // Current fill value for the bar
-    private float fillRate; // Rate at which the fill bar increases per second
+
 
     float timeElapsed = 0f;
     float fillAmount = 0f;
@@ -48,8 +46,6 @@ public class BuildingController : MonoBehaviour
     void Start()
     {
         occupiedCellSprRend = GetComponentsInChildren<SpriteRenderer>();
-
-        fillRate = 1f / buildingData.generationTimer;
 
         // Go into the first state
         CurrentState = DraggingState;
@@ -114,11 +110,15 @@ public class BuildingController : MonoBehaviour
                 GameManager.Instance.AddGold(buildingData.generatedGold);
                 GameManager.Instance.AddGems(buildingData.generatedGem);
 
-                GameObject floatingNumberGold = Instantiate(floatingNumber, transform.position, Quaternion.identity);
+                GameObject floatingNumberGold = ObjectPoolingManager.Instance.GetPooledObject(floatingNumber);
                 floatingNumberGold.GetComponent<FloatingNumber>().SetText(buildingData.generatedGold.ToString());
+                floatingNumberGold.transform.position = transform.position;
+                floatingNumberGold.SetActive(true);
 
-                GameObject floatingNumberGem = Instantiate(floatingNumber, transform.position + Vector3.right, Quaternion.identity);
+                GameObject floatingNumberGem = ObjectPoolingManager.Instance.GetPooledObject(floatingNumber);
                 floatingNumberGem.GetComponent<FloatingNumber>().SetText(buildingData.generatedGem.ToString());
+                floatingNumberGem.transform.position = transform.position + Vector3.right;
+                floatingNumberGem.SetActive(true);
 
                 // Reset time elapsed and fill bar
                 timeElapsed = 0f;
@@ -138,9 +138,9 @@ public class BuildingController : MonoBehaviour
 
     // ==================================================================
 
-    public void DestroyThisObject()
+    public void DeactivateObject()
     {
-        Destroy(gameObject, 0.1f);
+        gameObject.SetActive(false);
     }
 
     // ==================================================================

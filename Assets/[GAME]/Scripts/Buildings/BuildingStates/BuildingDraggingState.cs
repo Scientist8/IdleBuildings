@@ -56,7 +56,7 @@ public class BuildingDraggingState : BuildingBaseState
                 GameManager.Instance.AddGold(building.buildingData.buildingGoldCost);
                 GameManager.Instance.AddGems(building.buildingData.buildingGemCost);
 
-                building.DestroyThisObject();
+                building.DeactivateObject();
             }
         }
     }
